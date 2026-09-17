@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box; 
+}
+
+body {
+    color: white;
+    background-color: black;
+    height: 100vh;
+    overflow: hidden; 
+}
+
+:root {
+    --a: 0;
+}
+
+.container {
+    padding: 8px;
+    height: 100vh;
+    gap: 8px;
+    display: flex; 
+    overflow: hidden; /* Iske bina scroll nahi aayega */
+}
+/* ================= LEFT SIDEBAR ================= */
+.left {
+    height: calc(100vh - 16px); /* Exact screen height */
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    transition: all 0.4s ease-in-out;
+}
+.close {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.home {
+    padding: 20px;
+}
+
+.home ul li {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    color: white;
+    padding-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+}
+
+/* Sidebar ke Home aur Search icons ka size fix */
+.home ul li img {
+    width: 24px;
+}
+
+.logo img {
+    width: 90px;
+}
+
+.library {
+    flex-grow: 1; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Yeh missing tha! Isse list andar hi scroll hogi */
+}
+
+.heading {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.heading img {
+    width: 24px;
+}
+
+.songList {
+    flex-grow: 1;
+    overflow-y: auto; /* Song list me scrollbar layega */
+    margin-bottom: 60px; /* Footer ke liye space */
+}
+.songList ul {
+    padding: 0 15px;
+}
+
+.songList ul li {
+    list-style-type: decimal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #181818;
+    transition: background 0.3s;
+}
+
+.songList ul li:hover {
+    background-color: #282828;
+}
+
+.songList .info {
+    font-size: 13px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.info div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 10px;
+    gap: 15px;
+    padding: 15px 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #121212;
+}
+
+.footer a {
+    color: grey;
+    text-decoration: none;
+}
+
+/* ================= RIGHT MAIN AREA ================= */
+.right {
+    height: calc(100vh - 16px); /* 16px padding minus kar di */
+    width: 75vw;
+    position: relative;
+    overflow-y: auto; /* Scrollbar on right section */
+    padding-bottom: 100px; 
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #121212;
+    height: 70px;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.hamburgerContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.signup-btn {
+    background-color: transparent;
+    color: #a7a7a7;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.signup-btn:hover {
+    color: white;
+    transform: scale(1.05);
+}
+
+.login-btn {
+    background-color: white;
+    border-radius: 25px;
+    color: black;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    transform: scale(1.05);
+}
+
+.spotifyplaylist {
+    padding: 20px;
+}
+
+.spotifyplaylist h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* CSS Grid for Cards */
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #181818;
+    position: relative;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: #282828;
+    --a: 1;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.card h2 {
+    font-size: 16px;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card p {
+    color: #a7a7a7;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.play {
+    position: absolute;
+    bottom: 90px;
+    right: 20px;
+    opacity: var(--a);
+    transition: all 0.3s ease;
+    background-color: #1ed760;
+    border-radius: 50%;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 8px rgba(0,0,0,0.3);
+}
+
+.play:hover {
+    transform: scale(1.05);
+    background-color: #1fdf64;
+}
+
+/* ================= PLAYBAR ================= */
+.playbar {
+    position: fixed;
+    bottom: 15px;
+    left: calc(25vw + 16px);
+    width: calc(75vw - 32px);
+    background-color: #1f1f1f;
+    padding: 15px 20px;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+.seekbar {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+    bottom: 4px;
+    left: 0%;
+    transition: left 0.1s linear;
+}
+
+.abovebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.songinfo {
+    width: 25%;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-btn {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 50%;
+}
+
+.song-btn img {
+    cursor: pointer;
+    width: 30px;
+    transition: transform 0.2s;
+}
+
+.song-btn img:hover {
+    transform: scale(1.1);
+}
+
+.timevol {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    width: 25%;
+}
+
+.songtime {
+    font-size: 13px;
+    color: #a7a7a7;
+    white-space: nowrap;
+}
+
+.volume {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.range input {
+    width: 80px;
+    accent-color: #1ed760;
+    cursor: pointer;
+}
+
+/* ================= MEDIA QUERIES ================= */
+
+@media (max-width: 1100px) {
+    .left {
+        position: fixed;
+        left: -120%;
+        top: 0;
+        z-index: 1000;
+        width: 320px;
+        background-color: black;
+        padding: 10px;
+    }
+    
+    .left .close {
+        display: block;
+    }
+
+    .right {
+        width: 100vw;
+    }
+    
+    .playbar {
+        left: 15px;
+        width: calc(100vw - 30px);
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-arrows {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .cardContainer {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
+    
+    .play {
+        bottom: 75px;
+        padding: 8px;
+    }
+    
+    .abovebar {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .songinfo, .song-btn, .timevol {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .timevol {
+        justify-content: center;
+    }
+    
+    .playbar {
+        padding: 20px 15px;
+        bottom: 10px;
+    }
+    
+    .login-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .signup-btn {
+        font-size: 13px;
+    }
+}
